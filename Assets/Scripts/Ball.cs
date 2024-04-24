@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
     {
         actualPosition = this.transform.position;
         randomStartDirection = Random.Range(0,1); 
-        gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.down * ballSpeed);
+        //gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.down * ballSpeed);
         
     }
 
@@ -73,9 +73,9 @@ public class Ball : MonoBehaviour
         }else if(ballPos.x < bracketPos.x){
             Debug.Log("Me voy hacia la izquierda");
             return 2;
-        }/*else {
+        }else {
             Debug.Log("Me voy para el medio");
             return 3;
-        }*/
+        }
     }
 }
