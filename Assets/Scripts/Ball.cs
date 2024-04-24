@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     public float ballSpeed;
     public int randomStartDirection;
     public int ballDirection;
+    public Transform spawnPoint;
     public Rigidbody2D rb;
     Vector3 actualPosition;
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class Ball : MonoBehaviour
     {
         actualPosition = this.transform.position;
         randomStartDirection = Random.Range(0,1); 
+        spawnPoint = GameObject.Find("SpawnPoint").gameObject.transform;
         //gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.down * ballSpeed);
         
     }
@@ -64,6 +66,11 @@ public class Ball : MonoBehaviour
         if(other.gameObject.tag =="Ceiling"){
            // ballSpeed = -ballSpeed;
             Debug.Log("La bola ha chocado con el techo");
+        }
+
+        if(other.gameObject.tag == "DeadZone"){
+            Debug.Log("Debería hacer spawn otra bola");
+            transform.position = spawnPoint.position;
         }
     }
     public int BallBounce(Vector3 ballPos, Vector3 bracketPos){
